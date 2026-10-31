@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbi Gülhan | İnşaat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+        }
+
+        header {
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 25px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text .main {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .logo-text .sub {
+            font-size: 13px;
+            letter-spacing: 6px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #c9a227);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(45,45,45,0.75) 100%),
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 19px;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 45px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 38px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #c9a227);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .service-features {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .service-features span {
+            display: inline-block;
+            background: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #666;
+            margin: 4px;
+        }
+
+        .about {
+            background: white;
+            padding: 120px 50px;
+            max-width: 1400px;
+            margin: 100px auto;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .about-header h2 {
+            font-size: 42px;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .about-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            transition: transform 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .values-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .value-card {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .value-card:hover {
+            background: white;
+            border-color: #d4af37;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .value-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: white;
+            padding: 80px 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 25px;
+                padding: 25px 20px;
+            }
+
+            nav ul {
+                gap: 25px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 80px 25px;
+            }
+
+            .about {
+                padding: 80px 25px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Garbi Gülhan Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Kalite ve Güven İnşaatımızda</h1>
+            <p>Hayallerinizi gerçeğe dönüştürüyoruz</p>
+            <a href="#contact" class="btn">Bize Ulaşın</a>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2>Hizmetlerimiz</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Konut İnşaatı</h3>
+                <p>Modern ve konforlu yaşam alanları tasarlıyor, inşa ediyoruz.</p>
+                <div class="service-features">
+                    <span>Villa</span>
+                    <span>Apartman</span>
+                    <span>Müstakil</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Ticari Yapılar</h3>
+                <p>İş yerleri ve ofisler için profesyonel çözümler sunuyoruz.</p>
+                <div class="service-features">
+                    <span>Ofis</span>
+                    <span>Mağaza</span>
+                    <span>Depo</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Restorasyon</h3>
+                <p>Mevcut yapıların yenilenmesi ve güçlendirilmesi işlemleri.</p>
+                <div class="service-features">
+                    <span>Yenileme</span>
+                    <span>Güçlendirme</span>
+                    <span>Modernizasyon</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Danışmanlık</h3>
+                <p>Proje planlama ve uygulama aşamalarında uzman desteği.</p>
+                <div class="service-features">
+                    <span>Proje</span>
+                    <span>Bütçe</span>
+                    <span>Yönetim</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-header">
+            <h2>Biz Kimiz?</h2>
+            <p>Garbi Gülhan İnşaat olarak, her projede mükemmellik peşinde koşuyoruz. Yılların deneyimi ve modern teknolojiyi birleştirerek, müşterilerimizin hayallerini gerçeğe dönüştürüyoruz.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Yıllık Tecrübe</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Tamamlanan Proje</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Uzman Ekip</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">%100</div>
+                <div class="stat-label">Müşteri Memnuniyeti</div>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <div class="value-card">
+                <div class="value-icon">🏗️</div>
+                <h3>Kalite</h3>
+                <p>Her projede en yüksek standartları uygulıyor, malzeme ve işçilik kalitinden ödün vermiyoruz.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⏱️</div>
+                <h3>Zamanında Teslim</h3>
+                <p>Projelerimizi planlanan sürede tamamlıyor, taahhüt ettiğimiz tarihleri tutuyoruz.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Güven</h3>
+                <p>Müşterilerimizle şeffaf iletişim kuruyor, her aşamada onları bilgilendiriyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo.png" alt="Garbi Gülhan Logo" style="height: 220px; margin-bottom: 25px;">
+                <p style="opacity: 0.7; font-size: 14px; line-height: 1.8;">Kalite ve güvenin adresi. Projeleriniz için profesyonel çözümler sunuyoruz.</p>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>📞 +90 555 123 45 67</p>
+                <p>✉️ info@garbigulhan.com</p>
+                <p>📍 İnşaat Mahallesi, Yapı Sokak No: 1<br>İstanbul, Türkiye</p>
+                <p style="color: #d4af37; font-weight: bold; font-size: 13px; margin-top: 20px; line-height: 1.6;">BU BİLGİLER KESİNLİKLE GERÇEK DEĞİLDİR YAKIN ZAMANDA GERÇEKLERİYLE YER DEĞİŞİMİ OLACAKTIR</p>
+            </div>
+            <div class="footer-section">
+                <h3>Çalışma Saatleri</h3>
+                <p>Pazartesi - Cuma: 09:00 - 18:00</p>
+                <p>Cumartesi: 10:00 - 14:00</p>
+                <p>Pazar: Kapalı</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Garbi Gülhan İnşaat. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+</body>
+</html>
